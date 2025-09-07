@@ -20,11 +20,21 @@ fastify.get('/', function (request, reply) {
 })
 
 // Run the server!
-fastify.listen({ port: 3000 }, function (err, address) {
-  if (err) {
+// fastify.listen({ port: 3000 }, function (err, address) {
+//   if (err) {
+//     fastify.log.error(err)
+//     process.exit(1)
+//   }
+//   // server is now listeing on ${address}
+// })
+
+const start = async () => {
+  try {
+    await fastify.listen({ port: 3000 })
+  } catch (err) {
     fastify.log.error(err)
     process.exit(1)
   }
-  // server is now listeing on ${address}
-})
+}
 
+start()
